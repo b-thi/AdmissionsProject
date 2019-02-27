@@ -88,6 +88,6 @@ admissions_scrape <- function(school){
   }
 }
 
-test <- admissions_scrape("duke")
+test <- admissions_scrape("stanford")
 admissions_scrape("sfu")
 str(test)
