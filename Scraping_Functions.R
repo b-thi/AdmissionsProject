@@ -17,7 +17,8 @@ library(stringi)
 admissions_scrape <- function(school){
   
   # List of schools
-  schools <- c("stanford", "harvard", "duke", "chicago", "ucla")
+  schools <- c("stanford", "harvard", "duke", "chicago", "ucla",
+               "columbia")
   
   # Checking if school is in the system
   if (school %in% schools) {
@@ -91,3 +92,14 @@ admissions_scrape <- function(school){
 test <- admissions_scrape("stanford")
 admissions_scrape("sfu")
 str(test)
+
+
+test$Year <- as.numeric(format(test$Date, "%Y"))
+
+test %>%
+  group_by(Year) %>% 
+  filter(Level == "PhD") %>% 
+  summarise(columbia_accept = sum(Decision == "Accepted"),
+            n = n())
+
+
