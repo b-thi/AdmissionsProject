@@ -99,7 +99,7 @@ test$Year <- as.numeric(format(test$Date, "%Y"))
 test %>%
   group_by(Year) %>% 
   filter(Level == "PhD") %>% 
-  summarise(columbia_accept = sum(Decision == "Accepted"),
+  summarise(chicago_accept = sum(Decision == "Accepted"),
             n = n())
 
 
